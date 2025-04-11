@@ -12,6 +12,7 @@ Questa guida descrive una procedura per accedere a un servizio web remoto blocca
   - [3. Accesso al servizio](#3-accesso-al-servizio)
 - [Verifica della connessione](#verifica-della-connessione)
 - [Esempio di script per Windows](#esempio-di-script-per-windows)
+- [Utilizzo su Linux e macOS](#utilizzo-su-linux-e-macos)
 - [Note finali](#note-finali)
 
 ## Scenario
@@ -99,6 +100,63 @@ start "" ssh -L 443:domain.example:443 user@ssh.example.com -N
 timeout /t 2
 start https://domain.example
 ```
+
+## Utilizzo su Linux e macOS
+
+### 1. Modifica del file hosts
+
+Aprire il file `/etc/hosts` con privilegi di root:
+
+```bash
+sudo nano /etc/hosts
+```
+
+Aggiungere la seguente riga in fondo al file:
+
+```
+127.0.0.1 domain.example
+```
+
+Salvare e chiudere l'editor.
+
+### 2. Creazione del tunnel SSH
+
+Aprire un terminale ed eseguire il comando:
+
+```bash
+ssh -L 443:domain.example:443 user@ssh.example.com -N
+```
+
+Come su Windows, se la porta 443 è già occupata è possibile utilizzare una porta alternativa (es. 8443) e specificarla nel browser con `https://domain.example:8443`.
+
+### 3. Accesso al servizio
+
+Aprire il browser e navigare all'indirizzo:
+
+```
+https://domain.example
+```
+
+### 4. Script opzionale per Linux/macOS
+
+Per automatizzare l'apertura del tunnel e del browser, è possibile creare un semplice script shell:
+
+```bash
+#!/bin/bash
+ssh -f -L 443:domain.example:443 user@ssh.example.com -N
+sleep 2
+xdg-open https://domain.example
+```
+
+Salvare questo contenuto in un file, ad esempio `start-tunnel.sh`, renderlo eseguibile e lanciarlo:
+
+```bash
+chmod +x start-tunnel.sh
+./start-tunnel.sh
+```
+
+> Su macOS, è possibile usare `open` al posto di `xdg-open`.
+
 
 ## Note finali
 
