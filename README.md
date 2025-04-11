@@ -1,4 +1,4 @@
-# Bypass firewall con tunnel SSH e proxy HTTPS locale
+# Bypass firewall con tunnel SSH
 
 Questa guida descrive una procedura per accedere a un servizio web remoto bloccato da un firewall locale, utilizzando un tunnel SSH e una configurazione minima lato client. Il metodo è particolarmente utile in contesti in cui non è possibile utilizzare una VPN, ma si ha accesso a un server intermedio tramite SSH.
 
