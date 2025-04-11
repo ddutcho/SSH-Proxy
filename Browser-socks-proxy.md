@@ -58,9 +58,3 @@ https://ipinfo.io
 
 Se tutto è configurato correttamente, l’indirizzo IP mostrato sarà quello del server SSH remoto.
 
-### 4. Considerazioni
-
-- Questo metodo incanala solo il traffico del browser configurato, non l’intero traffico di rete del sistema operativo.
-- È ideale per la navigazione o l’uso di strumenti web da reti con restrizioni.
-- Firefox è particolarmente adatto perché supporta nativamente SOCKS v5 e il proxy DNS.
-- Per altri browser (es. Chrome), è possibile utilizzare estensioni dedicate o avviarli da linea di comando con parametri specifici.
